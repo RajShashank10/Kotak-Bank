@@ -1,0 +1,1260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kotak Mahindra Bank | Personal Banking, Net Banking, Loans, Credit Cards</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Global Styles */
+        :root {
+            --primary-color: #0056b3;
+            --secondary-color: #ff6b00;
+            --dark-color: #333;
+            --light-color: #f4f4f4;
+            --white: #fff;
+            --black: #000;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--dark-color);
+            background-color: var(--light-color);
+        }
+        
+        a {
+            text-decoration: none;
+            color: var(--primary-color);
+        }
+        
+        ul {
+            list-style: none;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: auto;
+            padding: 0 20px;
+            overflow: hidden;
+        }
+        
+        .btn {
+            display: inline-block;
+            background: var(--primary-color);
+            color: var(--white);
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: all 0.5s ease;
+        }
+        
+        .btn:hover {
+            background-color: #003d7a;
+            transform: translateY(-2px);
+        }
+        
+        .btn-secondary {
+            background-color: var(--secondary-color);
+        }
+        
+        .btn-secondary:hover {
+            background-color: #cc5500;
+        }
+        
+        .text-primary {
+            color: var(--primary-color);
+        }
+        
+        .text-secondary {
+            color: var(--secondary-color);
+        }
+        
+        /* Header */
+        header {
+            background-color: var(--white);
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .header-top {
+            background-color: var(--primary-color);
+            color: var(--white);
+            padding: 10px 0;
+            font-size: 14px;
+        }
+        
+        .header-top .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .header-top-links a {
+            color: var(--white);
+            margin-left: 15px;
+            font-weight: 500;
+        }
+        
+        .header-main {
+            padding: 15px 0;
+            background-color: red;
+        }
+        
+        .header-main .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: red;
+        }
+        
+        .logo {
+            width: 180px;
+        }
+        
+        .logo img {
+            width: 100%;
+        }
+        
+        .search-box {
+            display: flex;
+            align-items: center;
+            border-radius: 5px;
+            padding: 5px;
+            width: 200px;
+            background-color: rgba(255, 0, 0, 0);
+        }
+        
+        .search-box input {
+            border: none;
+            outline: none;
+            padding: 5px;
+            width: 100%;
+        }
+        
+        .search-box button {
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: var(--primary-color);
+            margin-left: 20px;
+        }
+
+        .login-dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        /* The dropdown content box */
+        .login-dropdown-content {
+            display: none;
+            position: absolute;
+            top: 48px;
+            right: 0;
+            background-color: white;
+            min-width: 300px;
+            padding: 16px;
+            border-radius: 8px;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+            z-index: 1000;
+            font-family: sans-serif;
+        }
+
+        /* Show dropdown on hover */
+        .login-dropdown:hover .login-dropdown-content {
+            display: block;
+        }
+
+        /* Login button style */
+        .login-btn {
+            background: white;
+            color: #003366;
+            font-size: 16px;
+            padding: 6px 20px;
+            border-radius: 20px;
+            border: none;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .login-btn:hover {
+            background: #e6f0fa;
+        }
+
+        /* Optional link styles inside dropdown */
+        .login-dropdown-content a {
+            display: block;
+            margin: 10px 0;
+            color: #e60000;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .login-dropdown-content a:hover {
+            text-decoration: underline;
+        }
+        
+        /* Navigation */
+        
+        
+        .nav-menu {
+            display: flex;
+        }
+        
+        .nav-menu li {
+            position: relative;
+        }
+        
+        .nav-menu li a {
+            color: var(--white);
+            padding: 15px 20px;
+            display: block;
+            font-weight: 500;
+            transition: background-color 0.3s ease;
+        }
+        
+        .nav-menu li a:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+        
+        .dropdown-menu {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background-color: var(--white);
+            width: 250px;
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            z-index: 10;
+        }
+        
+        .nav-menu li:hover .dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .dropdown-menu li a {
+            color: var(--dark-color);
+            padding: 10px 20px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .dropdown-menu li a:hover {
+            background-color: #f5f5f5;
+            color: var(--primary-color);
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0, 86, 179, 0.8), rgba(0, 86, 179, 0.8));
+            height: 93vh;
+            color: var(--white);
+            display: flex;
+            align-items: center;
+            text-align: center;
+            position: relative;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.125); /* dark overlay for readability */
+            z-index: 1;
+        }
+        
+        .hero-content {
+            max-width: 115vh;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .hero h1 {
+            font-size: 42px;
+            margin-bottom: 20px;
+        }
+        
+        .hero p {
+            font-size: 18px;
+            margin-bottom: 30px;
+        }
+        
+        .hero-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+        
+        /* Quick Links */
+        .quick-links {
+            background-color: var(--white);
+            padding: 30px 0;
+            margin-top: -50px;
+            position: relative;
+            z-index: 1;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+        }
+        
+        .quick-links-container {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+        
+        .quick-link-item {
+            text-align: center;
+            padding: 20px;
+            transition: all 0.3s ease;
+        }
+        
+        .quick-link-item:hover {
+            transform: translateY(-5px);
+        }
+        
+        .quick-link-item i {
+            font-size: 36px;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+        
+        .quick-link-item h3 {
+            margin-bottom: 10px;
+            font-size: 18px;
+        }
+        
+        /* Products Section */
+        .products {
+            padding: 80px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .section-title h2 {
+            font-size: 36px;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+        
+        .section-title p {
+            color: #666;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+        
+        .product-card {
+            background-color: var(--white);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.5s ease;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        }
+        
+        .product-img {
+            height: 200px;
+            overflow: hidden;
+        }
+        
+        .product-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .product-card:hover .product-img img {
+            transform: scale(1.1);
+        }
+        
+        .product-content {
+            padding: 20px;
+        }
+        
+        .product-content h3 {
+            margin-bottom: 15px;
+            font-size: 22px;
+        }
+        
+        .product-content p {
+            color: #666;
+            margin-bottom: 20px;
+        }
+        
+        /* Services Section */
+        .services {
+            padding: 80px 0;
+            background-color: #f9f9f9;
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+        
+        .service-card {
+            background-color: var(--white);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+        
+        .service-card i {
+            font-size: 40px;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+        
+        .service-card h3 {
+            margin-bottom: 15px;
+        }
+        
+        /* Video Section */
+        .video-section {
+            padding: 80px 0;
+            text-align: center;
+        }
+        
+        .video-container {
+            max-width: 800px;
+            margin: 40px auto 0;
+            position: relative;
+        }
+        
+        .video-container video {
+            width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .hello-container {
+            background-color: #f4f4f4;
+            padding: 20px;
+            border-radius: 10px;
+            max-width: 450px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+        .hello-container p {
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+
+        .img-card img {
+            width: 100%;
+            border-radius: 8px;
+            margin-bottom: 15px;
+        }
+
+        .A1 {
+            font-size: 14px;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .A1 b i {
+            display: block;
+            margin-top: 10px;
+            font-style: italic;
+            color: #000;
+        }
+        
+        /* Testimonials */
+        .testimonials {
+            padding: 80px 0;
+            background-color: var(--primary-color);
+            color: var(--white);
+        }
+        
+        .testimonials .section-title h2 {
+            color: var(--white);
+        }
+        
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+        
+        .testimonial-card {
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 30px;
+            border-radius: 10px;
+        }
+        
+        .testimonial-card .quote {
+            font-style: italic;
+            margin-bottom: 20px;
+        }
+        
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+        }
+        
+        .testimonial-author img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            margin-right: 15px;
+            object-fit: cover;
+        }
+        
+        .author-info h4 {
+            margin-bottom: 5px;
+        }
+        
+        .author-info p {
+            font-size: 14px;
+            opacity: 0.8;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: #222;
+            color: var(--white);
+            padding: 60px 0 0;
+        }
+        
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-col h3 {
+            font-size: 20px;
+            margin-bottom: 25px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-col h3::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 50px;
+            height: 2px;
+            background-color: var(--secondary-color);
+        }
+        
+        .footer-col ul li {
+            margin-bottom: 15px;
+        }
+        
+        .footer-col ul li a {
+            color: #bbb;
+            transition: color 0.3s ease;
+        }
+        
+        .footer-col ul li a:hover {
+            color: var(--white);
+        }
+        
+        .footer-col .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .footer-col .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: var(--white);
+            transition: all 0.3s ease;
+        }
+        
+        .footer-col .social-links a:hover {
+            background-color: var(--secondary-color);
+            transform: translateY(-3px);
+        }
+        
+        .footer-bottom {
+            background-color: #111;
+            padding: 20px 0;
+            text-align: center;
+            font-size: 14px;
+            color: #999;
+        }
+        
+        /* Mobile Menu */
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--white);
+            font-size: 24px;
+            cursor: pointer;
+        }
+        
+        /* Responsive Styles */
+        @media (max-width: 992px) {
+            .quick-links-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .products-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .services-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .testimonials-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .footer-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .header-top {
+                display: none;
+            }
+            
+            .search-box {
+                display: none;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .nav-menu {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background-color: var(--primary-color);
+                flex-direction: column;
+            }
+            
+            .nav-menu.active {
+                display: flex;
+            }
+            
+            .dropdown-menu {
+                position: static;
+                width: 100%;
+                opacity: 1;
+                visibility: visible;
+                display: none;
+                box-shadow: none;
+            }
+            
+            .nav-menu li:hover .dropdown-menu {
+                display: block;
+            }
+            
+            .hero {
+                height: 400px;
+            }
+            
+            .hero h1 {
+                font-size: 32px;
+            }
+            
+            .hero-buttons {
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            .quick-links-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .products-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .testimonials-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <!-- <header>
+        <div class="header-top">
+            <div class="container">
+                <div class="header-top-links">
+                    <a href="#"><i class="fas fa-map-marker-alt"></i>Branch Locator</a>
+                    <a href="#"><i class="fas fa-phone-alt"></i>Contact Us</a>
+                </div>
+                <div class="header-top-links">
+                    <a href="#"><i class="fas fa-lock"></i>Net Banking</a>
+                    <a href="#"><i class="fas fa-user"></i>Login</a>
+                </div>
+            </div>
+        </div>
+        <div class="header-main">
+            <div class="container">
+                <div class="logo">
+                    <img src="https://www.kotak.com/content/dam/Kotak/kotak-logo.svg" alt="Kotak Mahindra Bank">
+                </div>
+                <div class="search-box">
+                    <input type="text" placeholder="Search...">
+                    <button type="submit"><i class="fas fa-search"></i></button>
+                </div>
+                <button class="mobile-menu-btn" id="mobileMenuBtn">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+        <nav>
+            <div class="container">
+                <ul class="nav-menu" id="navMenu">
+                    <li><a href="#">Personal Banking</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">Savings Accounts</a></li>
+                            <li><a href="#">Current Accounts</a></li>
+                            <li><a href="#">Fixed Deposits</a></li>
+                            <li><a href="#">Recurring Deposits</a></li>
+                            <li><a href="#">Debit Cards</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#">Credit Cards</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">Kotak League Platinum</a></li>
+                            <li><a href="#">Kotak Urbane Gold</a></li>
+                            <li><a href="#">Kotak PVR Platinum</a></li>
+                            <li><a href="#">Kotak Zen Signature</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#">Loans</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">Home Loans</a></li>
+                            <li><a href="#">Personal Loans</a></li>
+                            <li><a href="#">Car Loans</a></li>
+                            <li><a href="#">Loan Against Property</a></li>
+                            <li><a href="#">Education Loans</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#">Investments</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">Mutual Funds</a></li>
+                            <li><a href="#">Fixed Deposits</a></li>
+                            <li><a href="#">Insurance</a></li>
+                            <li><a href="#">Demat Account</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#">Insurance</a></li>
+                    <li><a href="#">NRI Banking</a></li>
+                    <li><a href="#">About Us</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header> -->
+
+    <!-- Top Combined Bar -->
+    <div style="display: flex; width: 100%; height: 64px; font-family: sans-serif;">
+        <!-- Left: Red Navigation Bar -->
+        <div style="background-color: #e60000; color: white; flex: 1; display: flex; align-items: center; padding: 0 40px;">
+            <img src="https://www.kotak.com/content/dam/Kotak/kotak-logo.svg" alt="Kotak Mahindra Bank Logo" style="height: 36px; margin-right: 32px;">
+            <nav style="display: flex; gap: 24px; font-weight: 600; font-size: 13px;">
+                <a href="https://www.kotak.com/en/home.html" style="color: white; text-decoration: none;">Personal</a>
+                <a href="https://www.kotak.com/en/business.html" style="color: white; text-decoration: none;">Business</a>
+                <a href="https://www.kotak.com/en/corporate.html" style="color: white; text-decoration: none;">Corporate</a>
+                <a href="https://www.kotak.com/en/kotak-private-banking.html" style="color: white; text-decoration: none;">Private Banking</a>
+                <a href="https://www.kotak.com/en/personal-banking/privy-league.html" style="color: white; text-decoration: none;">Privy League</a>
+                <a href="https://www.kotak.com/en/solitaire.html" style="color: white; text-decoration: none;">Solitaire</a>
+                <a href="https://www.kotak.com/en/personal-banking/nri.html" style="color: white; text-decoration: none;">NRI Services</a>
+                <a href="https://www.kotak.com/en/investor-relations.html" style="color: white; text-decoration: none;">Investors</a>
+            </nav>
+        </div>
+
+        <!-- Right: Blue Login Section -->
+        <div style="background-color: #003366; color: white; padding: 0 40px; display: flex; align-items: center; gap: 16px;">
+            <div class="search-box">
+                <input type="text" placeholder="Search...">
+                <button type="submit"><i class="fas fa-search"></i></button>
+            </div>
+            <div class="login-dropdown">
+                <button class="login-btn">👤 Login</button>
+
+                <div class="login-dropdown-content" style="font-family: sans-serif;">
+                    <div style="margin-bottom: 12px;">
+                        <p style="margin: 0; font-size: 17px; color: #333;">
+                            Experience the <strong>all-new Kotak Netbanking</strong>
+                        </p>
+                        <p style="margin: 4px 0 0 0; font-size: 13px; color: #555;">
+                            Simpler, smarter & more intuitive than ever before
+                        </p>
+                    </div>
+                    <a href="https://netbanking.kotak.com/knb2/" style="background-color: #e60000; color: white; padding: 20px; border-radius: 25px; display: inline-block; text-align: center; margin-left: 35px;">
+                        Log in to Netbanking
+                    </a>
+                    <div style="display: flex; align-items: center; margin: 16px 0;">
+                        <hr style="flex: 1; border: none; border-top: 1px solid #ccc;">
+                        <span style="padding: 0 10px; font-size: 13px; color: #888;">Other logins</span>
+                        <hr style="flex: 1; border: none; border-top: 1px solid #ccc;">
+                    </div>
+
+                    <!-- Login Options -->
+                    <div style="display: flex; flex-direction: column; gap: 10px;">
+                        <a href="https://fyn.kotak.com/customer/portal#/login" style="
+                            display: flex;
+                            justify-content: space-between;
+                            align-items: center;
+                            color: #333;
+                            text-decoration: none;
+                            font-size: 14px;
+                        ">
+                            Kotak Fyn
+                            <span style="color: #e60000;">&#8250;</span>
+                        </a>
+                        <a href="https://kotakremit.kotak.com/" style="
+                            display: flex;
+                            justify-content: space-between;
+                            align-items: center;
+                            color: #333;
+                            text-decoration: none;
+                            font-size: 14px;
+                        ">
+                            Send Money Abroad
+                            <span style="color: #e60000;">&#8250;</span>
+                        </a>
+                        <a href="https://www.kotaksecurities.com/#login" style="
+                            display: flex;
+                            justify-content: space-between;
+                            align-items: center;
+                            color: #333;
+                            text-decoration: none;
+                            font-size: 14px;
+                        ">
+                            Kotak Securities
+                            <span style="color: #e60000;">&#8250;</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Secondary Gray Bar -->
+    <div style="background-color: #f7f7f7; border-bottom: 1px solid #e0e0e0; width: 100%;">
+        <div style="display: flex; align-items: center; justify-content: space-between; padding: 10px 40px;margin-left:100px;">
+            <nav style="display: flex; gap: 28px; font-size: 13px;">
+                <a href="#" style="color: #333; text-decoration: none;">Accounts & Deposits</a>
+                <a href="#" style="color: #333; text-decoration: none;">Cards & Prepaid Services</a>
+                <a href="#" style="color: #333; text-decoration: none;">Loans</a>
+                <a href="#" style="color: #333; text-decoration: none;">Investment & Insurance</a>
+                <a href="#" style="color: #333; text-decoration: none;">Payments & Taxes</a>
+                <a href="#" style="color: #333; text-decoration: none;">Offers</a>
+                <a href="#" style="color: #333; text-decoration: none;">Service Request</a>
+            </nav>
+            <div style="display: flex; align-items: center; gap: 12px;">
+                <button style="background: #e6f0fa; color: #003366; padding: 6px 16px; border: none; border-radius: 16px; font-size: 14px; display: flex; align-items: center; gap: 6px;">
+                    🎧 Help Center
+                </button>
+                <button style="background: #e6f0fa; color: #003366; padding: 6px 16px; border: none; border-radius: 16px; font-size: 14px; display: flex; align-items: center; gap: 6px;">
+                    📍 Locate us
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero" id="hero-section">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h1>Banking Made Easy With Kotak</h1>
+            <p>Experience seamless banking with our wide range of products and services designed to meet all your financial needs.</p>
+            <div class="hero-buttons">
+                <a href="https://onboarding.kotak.com/savings-account/verification?pid=PRD0101" class="btn">Open Savings Account</a>
+                <a href="https://www.kotak.com/en/personal-banking/accounts/savings-account/activ-money-savings-account.html" class="btn">Existing Customer?Activate</a>
+                <a href="https://cards.kotak.com/?channelCode=SF96" class="btn btn-secondary">Apply for Credit Card</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quick Links -->
+    <section class="quick-links">
+        <div class="container">
+            <div class="quick-links-container">
+                <div class="quick-link-item">
+                    <i class="fas fa-mobile-alt"></i>
+                    <h3>Mobile Banking</h3>
+                    <p>Bank on the go with our mobile app</p>
+                    <a href="#">Know More</a>
+                </div>
+                <div class="quick-link-item">
+                    <i class="fas fa-credit-card"></i>
+                    <h3>Credit Cards</h3>
+                    <p>Explore our premium credit cards</p>
+                    <a href="#">Know More</a>
+                </div>
+                <div class="quick-link-item">
+                    <i class="fas fa-home"></i>
+                    <h3>Home Loans</h3>
+                    <p>Get your dream home with attractive rates</p>
+                    <a href="#">Know More</a>
+                </div>
+                <div class="quick-link-item">
+                    <i class="fas fa-chart-line"></i>
+                    <h3>Investments</h3>
+                    <p>Grow your wealth with expert advice</p>
+                    <a href="#">Know More</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section class="products">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Products</h2>
+                <p>Explore our wide range of banking products designed to meet your financial needs</p>
+            </div>
+            <div class="products-grid">
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="https://www.kotak.com/content/dam/Kotak/feature-cards/everyday-sa-feature-cad-t.jpg.transform/transformer-width-360-height-202/image.jpg" alt="Savings Account">
+                    </div>
+                    <div class="product-content">
+                        <h4>EVERYDAY SAVINGS ACCOUNT</h4>
+                        <h3>Steps up with the right Savings Account</h3>
+                        <p>Enjoy offers on BookMyShow, EazyDiner and many more popular brands</p>
+                        <a href="https://onboarding.kotak.com/savings-account/verification?pid=PRD0101&utm_source=website&utm_medium=organic" class="btn">Open Now</a>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="https://www.kotak.com/content/dam/Kotak/feature-cards/mutual-funds-feature-card-t.jpg.transform/transformer-width-360-height-202/image.jpg" alt="Mutual Funds">
+                    </div>
+                    <div class="product-content">
+                        <h4>MUTUAL FUNDS</h4>
+                        <h3>Your goals need systematic investments</h3>
+                        <p>Kotak recommended Mutual Funds tailored to your goals</p>
+                        <a href="https://www.kotak.com/en/personal-banking/investments/mutual-funds/apply-for-mutual-funds.html" class="btn">Apply Now</a>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="https://www.kotak.com/content/dam/Kotak/feature-cards/home-loan-feature-card-t.jpg.transform/transformer-width-360-height-202/image.jpg" alt="Home Loan">
+                    </div>
+                    <div class="product-content">
+                        <h4>HOME LOANS</h4>
+                        <h3>Aspire to own a home in your dream pincode?</h3>
+                        <p>Make it possible with Home Loans starting at just 8.20% p.a.</p>
+                        <a href="https://homeloans.kotak.com/loginDetail?flow=apply&pn=HL&cid=HL001&cName=HLfeaturecard_homepage&c_source=New_DIY&c_medium=Website_ProductPage&c_campaign=Apply_Now_Main_Banner&c_content=Display&c_term=HL001" class="btn">Know More</a>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="https://www.kotak.com/content/dam/Kotak/feature-cards/current-account-feature-card-t.jpg.transform/transformer-width-360-height-202/image.jpg" alt="Current Account">
+                    </div>
+                    <div class="product-content">
+                        <h4>CURRENT ACCOUNT</h4>
+                        <h3>Power your entrepreneurial dreams</h3>
+                        <p>Enjoy simplified transactions and grow the smart way</p>
+                        <a href="https://www.kotak.com/en/business/accounts/current-accounts/call-back.html?formname=ca_campaign_callback&source=homepage-card" class="btn">Apply Now</a>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="https://www.kotak.com/content/dam/Kotak/feature-cards/business-capital-feature-card-t.jpg.transform/transformer-width-360-height-202/image.jpg" alt="Business Lending">
+                    </div>
+                    <div class="product-content">
+                        <h4>BUSINESS LENDING</h4>
+                        <h3>Not enough funds for your business dreams?</h3>
+                        <p>Flexible collateral-free loans from Rs3 lakh to Rs1 crore</p>
+                        <a href="https://kudosdigital.kotak.com/vivid/vividflow/run/personal_loan#BL_Authentication" class="btn">Apply Now</a>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="https://www.kotak.com/content/dam/Kotak/feature-cards/working-capital-feature-card-t.jpg.transform/transformer-width-360-height-202/image.jpg" alt="Working Capital">
+                    </div>
+                    <div class="product-content">
+                        <h4>WORKING CAPITAL</h4>
+                        <h3>Your big ambitions need smart capital</h3>
+                        <p>Answer business opportunities with confidence, thanks to your working capital solutions</p>
+                        <a href="https://www.kotak.com/en/corporate/solutions/finance-my-business/working-capital-finance/apply-for-working-capital-solutions.html" class="btn">Open Now</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Services</h2>
+                <p>We offer a comprehensive range of banking services to make your life easier</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card">
+                    <i class="fas fa-money-bill-wave"></i>
+                    <h3>Instant Money Transfer</h3>
+                    <p>Transfer money instantly to any bank account in India with NEFT, RTGS or IMPS</p>
+                </div>
+                <div class="service-card">
+                    <i class="fas fa-lock"></i>
+                    <h3>Secure Net Banking</h3>
+                    <p>Bank from anywhere with our secure and easy-to-use net banking platform</p>
+                </div>
+                <div class="service-card">
+                    <i class="fas fa-mobile-alt"></i>
+                    <h3>Mobile Banking</h3>
+                    <p>Access your accounts, pay bills and transfer money with our mobile banking app</p>
+                </div>
+                <div class="service-card">
+                    <i class="fas fa-headset"></i>
+                    <h3>24/7 Customer Support</h3>
+                    <p>Our customer care executives are available round the clock to assist you</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Video Section -->
+    <section class="video-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Welcome to Kotak Mahindra Bank</h2>
+                <p>Watch our video to learn more about our services and how we can help you achieve your financial goals</p>
+            </div>
+            <div class="video-container">
+                <!-- <video controls poster="https://www.kotak.com/content/dam/Kotak/video-thumbnails/homepage-yt-t-690x340.jpg.transform/transformer-width-495-height-242/image.jpg" width="400px" height="390px" controls>
+                    <source src="https://www.youtube.com/embed/t7ZU1dCVpWU?autoplay=1" controls>
+                    Your browser does not support the video tag.
+                </video> -->
+                <iframe 
+                    width="550" 
+                    height="400" 
+                    src="https://www.youtube.com/embed/t7ZU1dCVpWU?autoplay=1" controls
+                    title="YouTube video player" 
+                    frameborder="0" 
+                    allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                    allowfullscreen
+                    poster="https://www.kotak.com/content/dam/Kotak/video-thumbnails/homepage-yt-t-690x340.jpg.transform/transformer-width-495-height-242/image.jpg">
+                </iframe>
+            </div>
+            <div class="hello-container">
+                <p>Hausla hai toh ho jayega</p>
+                <div class="img-card">
+                    <img src="https://www.kotak.com/content/dam/Kotak/feature-cards/housla-hai-to-ho-jayega_girl-image.jpg.transform/transformer-width-495-height-242/image.jpg" alt="">
+                    <div class="A1">
+                        "At Kotak, we believe in the fearless trailblazers-the ones who dare to dream bigger, push boundaries, and turn challenges into opportunities. That's why we are here-to back you with financial solutions that evolve with your needs, empowering you to chase the extraordinary.&nbsp;"
+                        <b>
+                            <i>Because when you have Hausla, anything is possible.</i>
+                        </b>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="testimonials">
+        <div class="container">
+            <div class="section-title">
+                <h2>What Our Customers Say</h2>
+                <p>Hear from our satisfied customers about their banking experience with Kotak</p>
+            </div>
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="quote">
+                        "Kotak's mobile banking app is the best I've used. It's intuitive, fast and has all the features I need for my daily banking."
+                    </div>
+                    <div class="testimonial-author">
+                        <img src="https://randomuser.me/api/portraits/women/32.jpg" alt="Priya Sharma">
+                        <div class="author-info">
+                            <h4>Priya Sharma</h4>
+                            <p>Savings Account Holder</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="quote">
+                        "The home loan process was seamless with Kotak. Their representatives guided me at every step and I got the best interest rate in the market."
+                    </div>
+                    <div class="testimonial-author">
+                        <img src="https://randomuser.me/api/portraits/men/45.jpg" alt="Rahul Mehta">
+                        <div class="author-info">
+                            <h4>Rahul Mehta</h4>
+                            <p>Home Loan Customer</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="quote">
+                        "I've been using Kotak's credit cards for years. The rewards program is excellent and customer service is always prompt and helpful."
+                    </div>
+                    <div class="testimonial-author">
+                        <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Anjali Patel">
+                        <div class="author-info">
+                            <h4>Anjali Patel</h4>
+                            <p>Credit Card Holder</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h3>Personal Banking</h3>
+                    <ul>
+                        <li><a href="#">Savings Account</a></li>
+                        <li><a href="#">Current Account</a></li>
+                        <li><a href="#">Fixed Deposits</a></li>
+                        <li><a href="#">Recurring Deposits</a></li>
+                        <li><a href="#">Debit Cards</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Loans</h3>
+                    <ul>
+                        <li><a href="#">Home Loans</a></li>
+                        <li><a href="#">Personal Loans</a></li>
+                        <li><a href="#">Car Loans</a></li>
+                        <li><a href="#">Loan Against Property</a></li>
+                        <li><a href="#">Education Loans</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Investments</h3>
+                    <ul>
+                        <li><a href="#">Mutual Funds</a></li>
+                        <li><a href="#">Fixed Deposits</a></li>
+                        <li><a href="#">Insurance</a></li>
+                        <li><a href="#">Demat Account</a></li>
+                        <li><a href="#">Wealth Management</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Connect With Us</h3>
+                    <ul>
+                        <li><i class="fas fa-map-marker-alt"></i> 27 BKC, Bandra Kurla Complex, Mumbai</li>
+                        <li><i class="fas fa-phone-alt"></i> 1860 266 2666</li>
+                        <li><i class="fas fa-envelope"></i> customer.service@kotak.com</li>
+                    </ul>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="container">
+                <p>&copy; 2023 Kotak Mahindra Bank. All Rights Reserved. | <a href="#">Privacy Policy</a> | <a href="#">Terms & Conditions</a> | <a href="#">Disclaimer</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.querySelectorAll('.nav-menu > li > a').forEach(menu => {
+            menu.addEventListener('click', function (e) {
+                const dropdown = this.nextElementSibling;
+                if (dropdown && dropdown.classList.contains('dropdown-menu')) {
+                    e.preventDefault();
+                    dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
+                }
+            });
+        });
+
+        const images = [
+            'https://www.kotak.com/content/dam/Kotak/herosliderbanner/kotak-brand-girl-cc-banner-1440-x-548.jpg',
+            'https://www.promoflexindia.com/photos/shares/products/x8STcB7MgmCzcfERFr5UUPKpMIqlHQYHYS4IHa5R.jpeg'
+        ];
+
+        let current = 0;
+        const heroSection = document.getElementById('hero-section');
+
+        function changeBackground() {
+            heroSection.style.backgroundImage = `url('${images[current]}')`;
+            current = (current + 1) % images.length;
+        }
+
+        // Initialize
+        changeBackground();
+        setInterval(changeBackground, 5000);
+
+        // Mobile Menu Toggle
+        document.getElementById('mobileMenuBtn').addEventListener('click', function() {
+            document.getElementById('navMenu').classList.toggle('active');
+        });
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
